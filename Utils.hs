@@ -1,18 +1,21 @@
 module Utils where
 
--- HELPERS
+-- |Checks if Maybe has any result
 isJust (Just _) = True
 isJust _        = False
 
+-- |Extracts Maybe result
 unJust (Just a) = a
 
+-- |Creates list by removing element form an old list
+removeAt [] _ = []
 removeAt xs n = fst ys ++ (tail (snd ys))
                  where ys = splitAt n xs
 
 insertAt newElem xs n = fst ys ++ [newElem] ++ (tail (snd ys))
                  where ys = splitAt n xs
 
--- TODO comment
+-- | Returns intersection if two lists
 intersection [] _            = []
 intersection _ []            = []
 intersection (c1:c1s) c2List = if elem c1 c2List
@@ -24,7 +27,7 @@ intersection (c1:c1s) c2List = if elem c1 c2List
 -- intersection [] [1] == []
 -- intersection [0,1,2] [3,4,5,6] == []
 
--- TODO comment
+-- | Returns true if there are any duplicates in the list, false otherwise
 duplicates [] = False
 duplicates (v:vs) | elem v vs = True
                   | otherwise = duplicates vs
