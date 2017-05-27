@@ -7,7 +7,7 @@ import StateValidation
 
 -- |Generate possible valoues for Hex considering only its direct neighbours values.
 -- TODO extend how deep in neighbour graph do we look up ?
-generateValues hex state = foldl intersection allMeaningfulHexValues (map (complement.value) (neighbours hex state))
+generateValues hex state = foldl intersection allMeaningfulHexValues (map (complement.value) (neighboursNeighbours hex state))
 -- TESTS:
 -- generateValues (Hex D 1 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == [D]
 -- TODO more tests

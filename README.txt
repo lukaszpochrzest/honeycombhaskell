@@ -4,4 +4,4 @@ Prelude> :load Main
 compiler:
 ghc --make *.hs
 
-rm !(*.hs|README.txt|file)
+rm !(*.hs|README.txt|file|*.test)

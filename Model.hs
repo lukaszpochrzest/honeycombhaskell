@@ -76,6 +76,13 @@ getWNeighbour (Hex val row column) state  | isFirstColumn (Hex val row column) s
 -- neighbours (Hex F 2 0) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == [Hex D 1 1,Hex G 2 1,Hex C 1 0]
 -- neighbours (Hex G 2 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == [Hex E 1 2,Hex F 2 0,Hex D 1 1]
 
+-- https://stackoverflow.com/questions/40025319/fmap-and-flat-map-in-haskell
+neighboursNeighbours hex state = (neighbours hex state) >>= \neighbour -> neighbours neighbour state
+
+-- neighboursNeighbours (Hex A 0 0) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex Empty 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3)
+-- neighboursNeighbours (Hex A 0 0) (State [[Hex A 0 0, Hex B 0 1, Hex A 0 2], [Hex C 1 0, Hex Empty 1 1, Hex E 1 2, Hex B 1 3], [Hex F 2 0, Hex G 2 1, Hex C 2 2], [Hex A 3 0, Hex B 3 1, Hex C 3 2, Hex D 3 3]] 4)
+
+
 -- | Returns list of all meaningful hex values
 allMeaningfulHexValues = [A,B,C,D,E,F,G]
 

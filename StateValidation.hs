@@ -1,10 +1,10 @@
-module StateValidation where
+module StateValidation (validateNewHex) where
 import Debug.Trace (trace)
 import Model
 import InputConversion
 import Utils
 
-validateNewHex emptyHex newState = validateHex (getNewHex emptyHex newState) newState
+validateNewHex emptyHex newState = if validateHex (getNewHex emptyHex newState) newState == True then True else error "ERROR! Validation failed"
 getNewHex oldHex newState = getHex newState (getRow oldHex) (getColumn oldHex)
 
 -- TODO comment
