@@ -1,11 +1,11 @@
 module InputValidation where
 import InputConversion
 
-validate plaster = lengthsOf (evenlines plaster) (n-1) && lengthsOf (oddlines plaster) n
+validate plaster = if lengthsOf (evenlines plaster) (n-1) && lengthsOf (oddlines plaster) n then plaster else plaster
                                 where n = length (getLines plaster)
 -- TEST:
 --validate (Plaster ["abc", "abcd", "abc", "abcd"])==True
---validate (Plaster ["abc", "abcd", "abc"]) -- throews Exception
+--validate (Plaster ["abc", "abcd", "abc"]) -- throws Exception
 
 
 evenlines (Plaster lines) = evenlinesInternal lines 0
@@ -24,4 +24,4 @@ oddlinesInternal (l:ls) index | odd index == True = l:(oddlinesInternal ls (inde
 
 
 lengthsOf [] _ = True
-lengthsOf (l:lists) k = if length l == k then lengthsOf lists k else error "ERROR! Invalid input"
+lengthsOf (l:lists) k = if length l == k then lengthsOf lists k else error ("ERROR! Invalid input: line " ++ l ++ " should have " ++ show(k) ++ " symbols")
