@@ -1,10 +1,10 @@
 module Main where
 import System.Environment
 import Model
-import ModelConversion
+import InputConversion
 import Algorithm
 import Utils
 
 main = do       args <- getArgs
                 content <- readFile (args !! 0)
-                print (showState (unJust (rWT (parseLines (lines content)))))
+                print (showState (unJust (rWT (convertPlasterToState ((read content)::Plaster)))))

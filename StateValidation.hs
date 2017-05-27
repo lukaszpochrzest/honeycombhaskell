@@ -1,7 +1,7 @@
 module StateValidation where
 import Debug.Trace (trace)
 import Model
-import ModelConversion
+import InputConversion
 import Utils
 
 validateNewHex emptyHex newState = validateHex (getNewHex emptyHex newState) newState

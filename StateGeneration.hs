@@ -1,7 +1,7 @@
 module StateGeneration where
 import Debug.Trace (trace)
 import Model
-import ModelConversion
+import InputConversion
 import Utils
 import StateValidation
 

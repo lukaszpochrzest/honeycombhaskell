@@ -7,7 +7,7 @@ import Debug.Trace (trace)
 data Hex = Hex HexValue Int Int deriving (Eq, Show)
 data HexValue = Empty | A | B | C | D | E | F | G deriving (Eq, Show)
 
-data State = State [[Hex]] Int --deriving (Show)
+data State = State [[Hex]] Int deriving (Show)
 
 -- |Extracts data from state
 value (Hex val _ _) = val
