@@ -24,9 +24,9 @@ isLastColumn (Hex _ row column) (State _ n) | even row  = column + 1 == n - 1
 isFirstColumn (Hex _ _ column) _ = column == 0
 
 -- |Creates new state by inserting hex into an old state
-insertHex hex (State honeycomb n) = State (insertHexInHoneycomb hex honeycomb 0) n
-insertHexInHoneycomb hex (row:rows) currRowIndex | (getRow hex) == currRowIndex = (removeThanInsertAt hex row (getColumn hex)):rows
-                                                 | otherwise                    = row:(insertHexInHoneycomb hex rows (currRowIndex + 1)) 
+insertHex hex (State honeycomb n) = State (swapInMatrixAt hex honeycomb (getColumn hex) (getRow hex) ) n
+--insertHexInHoneycomb hex (row:rows) currRowIndex | (getRow hex) == currRowIndex = (swapAt hex row (getColumn hex)):rows
+--                                                 | otherwise                    = row:(insertHexInHoneycomb hex rows (currRowIndex + 1)) 
 --insertHexInRow hex (h:hs) currentHIndex | (getColumn hex) == currentHIndex = hex:hs
 --                                        | otherwise                        = h:(insertHexInRow hex hs (currentHIndex+1))
 --TESTS

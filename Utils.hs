@@ -16,10 +16,18 @@ removeAt xs n = fst ys ++ (tail (snd ys))
 insertAt newElem xs n = fst ys ++ [newElem] ++ (tail (snd ys))
                  where ys = splitAt n xs
 
-removeThanInsertAt e list atIndex = removeThanInsertAtInternal e list atIndex 0
 
-removeThanInsertAtInternal e (x:xs) atIndex currIndex | atIndex == currIndex = e:xs
-                                                      | otherwise            = x:(removeThanInsertAtInternal e xs atIndex (currIndex+1))
+swapInMatrixAt e matrix x y = swapInMatrixAtInternal e matrix x y 0
+
+swapInMatrixAtInternal e (r:rs) x y currY | y == currY = (swapAt e r x):rs
+                                          | otherwise      = r:(swapInMatrixAtInternal e rs x y (currY+1))
+
+
+swapAt e list atIndex = swapAtInternal e list atIndex 0
+
+swapAtInternal e (x:xs) atIndex currIndex | atIndex == currIndex = e:xs
+                                          | otherwise            = x:(swapAtInternal e xs atIndex (currIndex+1))
+
 
 -- | Returns intersection if two lists
 intersection [] _            = []
