@@ -42,3 +42,8 @@ duplicates (v:vs) | elem v vs = True
 -- duplicates [1,2,3,4,3] == True
 -- duplicates [1,2,3,4,5,6] == False
 
+findInMatrix [] _ = Nothing
+findInMatrix (row:rows) recognise = if found /= Nothing then found else findInMatrix rows recognise
+                                        where found = findInRow row recognise
+findInRow [] _= Nothing
+findInRow (h:hs) recognise = if recognise h then Just h else findInRow hs recognise

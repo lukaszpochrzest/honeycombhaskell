@@ -8,6 +8,7 @@ import StateValidation
 import ValueGeneration
 
 generateStatesTrace emptyHex state = trace ("Generating states from state:\n" ++ (showState state)) (generateStates emptyHex state)
+-- TODO no validation here
 generateStates emptyHex state = filter (\newState -> validateNewHex emptyHex newState) (proposedStates emptyHex state)
 
 proposedStates hex state = generateStatesFromValues generatedValues hex state
