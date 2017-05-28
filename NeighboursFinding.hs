@@ -3,7 +3,7 @@ import Model
 import Utils
 
 
--- | Finds neighbours of hex
+-- | Finds neighbours of given Hex
 neighbours hex state = map unJust (filter isJust ((getNENeighbour hex state):(getENeighbour hex state):(getSENeighbour hex state):(getSWNeighbour hex state):(getWNeighbour hex state):(getNWNeighbour hex state):[]))
 
 getNENeighbour (Hex val row column) state | isTopRow (Hex val row column) state = Nothing
@@ -47,6 +47,7 @@ getWNeighbour (Hex val row column) state  | isFirstColumn (Hex val row column) s
 -- neighbours (Hex G 2 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == [Hex E 1 2,Hex F 2 0,Hex D 1 1]
 
 -- https://stackoverflow.com/questions/40025319/fmap-and-flat-map-in-haskell
+-- | Finds neighbours of neighbours of given Hex
 neighboursNeighbours hex state = (neighbours hex state) >>= \neighbour -> neighbours neighbour state
 
 -- neighboursNeighbours (Hex A 0 0) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex Empty 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3)

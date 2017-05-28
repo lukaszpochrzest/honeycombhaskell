@@ -1,6 +1,7 @@
 module InputValidation (validate) where
 import InputModel
 
+-- | Validates plaster
 validate plaster = if lengthsOf (evenlines plaster) (n-1) && lengthsOf (oddlines plaster) n then plaster else plaster
                                 where n = length (getLines plaster)
 -- TEST:

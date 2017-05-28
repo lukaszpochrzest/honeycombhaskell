@@ -3,19 +3,19 @@ import Model
 import NeighboursFinding
 import Utils
 
--- | Returns possible values generated for Hex considering only its neighbours and its neighbours' neighbours
+-- | Evaluates to possible values generated for given Hex considering only its neighbours and its neighbours' neighbours
 generateValues hex state = intersectComplementValuesOf (neighboursNeighbours hex state)
 -- TESTS:
 -- generateValues (Hex D 1 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == [D]
 -- TODO more tests
 
--- | Returns intersection of lists of values that are complement to hexes values
+-- | Evaluates to intersection of lists of values that are complement to given hexes values
 intersectComplementValuesOf hexes = foldl intersection allMeaningfulHexValues (map (complement.value) hexes)
 
--- | Returns list of all meaningful hex values
+-- | Evaluates to list of all meaningful HexValues
 allMeaningfulHexValues = [A,B,C,D,E,F,G]
 
--- TODO comment TODO it doesnt have to be hardcoded (iterate through and remove if equals)
+-- | Evaluates to complement values to given HexValue
 complement A = [B,C,D,E,F,G]
 complement B = [A,C,D,E,F,G]
 complement C = [A,B,D,E,F,G]

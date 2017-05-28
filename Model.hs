@@ -3,13 +3,13 @@ import Utils
 
 import Debug.Trace (trace)
 
--- |Hex consists of HexValue and coordinates(colummn, row)
+-- | Hex consists of HexValue and coordinates(colummn, row)
 data Hex = Hex HexValue Int Int deriving (Eq, Show)
 data HexValue = Empty | A | B | C | D | E | F | G deriving (Eq, Show)
 
 data State = State [[Hex]] Int deriving (Show)
 
--- |Extracts data from state
+-- | Extracts data from state
 value (Hex val _ _) = val
 getRow (Hex _ row _) = row
 getColumn (Hex _ _ column) = column
