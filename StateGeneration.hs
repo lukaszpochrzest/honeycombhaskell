@@ -1,11 +1,10 @@
 module StateGeneration (generateStatesTrace) where
 import Debug.Trace (trace)
+import ModelDebugShow
 import Model
-import NeighboursFinding
-import InputConversion
-import Utils
 import StateValidation
 import ValueGeneration
+import Utils
 
 generateStatesTrace emptyHex state = trace ("Generating states from state:\n" ++ (showState state)) (generateStates emptyHex state)
 -- TODO no validation here

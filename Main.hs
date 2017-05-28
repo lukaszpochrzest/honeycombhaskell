@@ -1,5 +1,6 @@
 module Main where
 import System.Environment
+import ModelDebugShow
 import Model
 import InputConversion
 import InputValidation

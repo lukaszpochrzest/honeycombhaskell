@@ -22,22 +22,3 @@ isTopRow (Hex _ row _) _ = row == 0
 isLastColumn (Hex _ row column) (State _ n) | even row  = column + 1 == n - 1
                                             | otherwise = column + 1 == n
 isFirstColumn (Hex _ _ column) _ = column == 0
-
--- | converts State to String
-showState state = showLines (getHoneycomb state) 0
-
-showLines [] n = []
-showLines (hexLine:hexLines) n | even n == True = " " ++ (showHexes hexLine) ++ "\n" ++ (showLines hexLines (n+1))
-                               | otherwise      = (showHexes hexLine) ++ "\n" ++ (showLines hexLines (n+1))
-
-showHexes [] = []
-showHexes (hex:hexes) = (showValue (value hex)):' ':(showHexes hexes)
-
-showValue A = 'A'
-showValue B = 'B'
-showValue C = 'C'
-showValue D = 'D'
-showValue E = 'E'
-showValue F = 'F'
-showValue G = 'G'
-showValue Empty = '-'
