@@ -32,17 +32,4 @@ insertHexInHoneycomb hex (row:rows) currRowIndex | (getRow hex) == currRowIndex 
 --TESTS
 -- insertHex (Hex A 2 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == State [[Hex A 0 0,Hex B 0 1],[Hex C 1 0,Hex D 1 1,Hex E 1 2],[Hex F 2 0,Hex A 2 1]] 3
 
--- | Returns list of all meaningful hex values
-allMeaningfulHexValues = [A,B,C,D,E,F,G]
-
--- TODO comment TODO it doesnt have to be hardcoded (iterate through and remove if equals)
-complement A = [B,C,D,E,F,G]
-complement B = [A,C,D,E,F,G]
-complement C = [A,B,D,E,F,G]
-complement D = [A,B,C,E,F,G]
-complement E = [A,B,C,D,F,G]
-complement F = [A,B,C,D,E,G]
-complement G = [A,B,C,D,E,F]
-complement Empty = [A,B,C,D,E,F,G]
-
 
