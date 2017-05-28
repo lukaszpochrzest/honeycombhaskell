@@ -12,8 +12,14 @@ removeAt [] _ = []
 removeAt xs n = fst ys ++ (tail (snd ys))
                  where ys = splitAt n xs
 
+-- TODO remove this one, its not used really
 insertAt newElem xs n = fst ys ++ [newElem] ++ (tail (snd ys))
                  where ys = splitAt n xs
+
+removeThanInsertAt e list atIndex = removeThanInsertAtInternal e list atIndex 0
+
+removeThanInsertAtInternal e (x:xs) atIndex currIndex | atIndex == currIndex = e:xs
+                                                      | otherwise            = x:(removeThanInsertAtInternal e xs atIndex (currIndex+1))
 
 -- | Returns intersection if two lists
 intersection [] _            = []

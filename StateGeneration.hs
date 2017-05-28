@@ -1,6 +1,7 @@
 module StateGeneration where
 import Debug.Trace (trace)
 import Model
+import NeighboursFinding
 import InputConversion
 import Utils
 import StateValidation

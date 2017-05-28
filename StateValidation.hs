@@ -1,6 +1,7 @@
 module StateValidation (validateNewHex) where
 import Debug.Trace (trace)
 import Model
+import NeighboursFinding
 import InputConversion
 import Utils
 
