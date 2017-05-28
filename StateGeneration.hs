@@ -15,8 +15,10 @@ generateValues hex state = foldl intersection allMeaningfulHexValues (map (compl
 generateStatesTrace emptyHex state = trace ("Generating states from state:\n" ++ (showState state)) (generateStates emptyHex state)
 generateStates emptyHex state = filter (\newState -> validateNewHex emptyHex newState) (proposedStates emptyHex state)
 
-proposedStates hex state = map (\newValue -> generateState newValue hex state) generatedValues
+proposedStates hex state = generateStatesFromValues generatedValues hex state
                                 where generatedValues = generateValues hex state
+
+generateStatesFromValues generatedValues hex state = trace ("Generated values:" ++ (show generatedValues)) (map (\newValue -> generateState newValue hex state) generatedValues)
 
 generateState newValue hex state = insertHex (Hex newValue (getRow hex) (getColumn hex)) state
 -- TESTS: TODO better tests
