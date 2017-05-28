@@ -23,13 +23,21 @@ isLastColumn (Hex _ row column) (State _ n) | even row  = column + 1 == n - 1
                                             | otherwise = column + 1 == n
 isFirstColumn (Hex _ _ column) _ = column == 0
 
--- |Creates new state by inserting hex into an old state
-insertHex hex (State honeycomb n) = State (swapInMatrixAt hex honeycomb (getColumn hex) (getRow hex) ) n
---insertHexInHoneycomb hex (row:rows) currRowIndex | (getRow hex) == currRowIndex = (swapAt hex row (getColumn hex)):rows
---                                                 | otherwise                    = row:(insertHexInHoneycomb hex rows (currRowIndex + 1)) 
---insertHexInRow hex (h:hs) currentHIndex | (getColumn hex) == currentHIndex = hex:hs
---                                        | otherwise                        = h:(insertHexInRow hex hs (currentHIndex+1))
---TESTS
--- insertHex (Hex A 2 1) (State [[Hex A 0 0, Hex B 0 1], [Hex C 1 0, Hex D 1 1, Hex E 1 2], [Hex F 2 0, Hex G 2 1]] 3) == State [[Hex A 0 0,Hex B 0 1],[Hex C 1 0,Hex D 1 1,Hex E 1 2],[Hex F 2 0,Hex A 2 1]] 3
+-- | converts State to String
+showState state = showLines (getHoneycomb state) 0
 
+showLines [] n = []
+showLines (hexLine:hexLines) n | even n == True = " " ++ (showHexes hexLine) ++ "\n" ++ (showLines hexLines (n+1))
+                               | otherwise      = (showHexes hexLine) ++ "\n" ++ (showLines hexLines (n+1))
 
+showHexes [] = []
+showHexes (hex:hexes) = (showValue (value hex)):' ':(showHexes hexes)
+
+showValue A = 'A'
+showValue B = 'B'
+showValue C = 'C'
+showValue D = 'D'
+showValue E = 'E'
+showValue F = 'F'
+showValue G = 'G'
+showValue Empty = '-'

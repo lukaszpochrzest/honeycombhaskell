@@ -1,5 +1,5 @@
 module InputValidation (validate) where
-import InputConversion
+import InputModel
 
 validate plaster = if lengthsOf (evenlines plaster) (n-1) && lengthsOf (oddlines plaster) n then plaster else plaster
                                 where n = length (getLines plaster)

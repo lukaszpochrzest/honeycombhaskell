@@ -55,3 +55,10 @@ findInMatrix (row:rows) recognise = if found /= Nothing then found else findInMa
                                         where found = findInRow row recognise
 findInRow [] _= Nothing
 findInRow (h:hs) recognise = if recognise h then Just h else findInRow hs recognise
+
+
+mapMatrix f [] _     = []
+mapMatrix f (r:rs) y = (mapRow f r 0 y):(mapMatrix f rs (y+1))
+
+mapRow f [] _ _        = []
+mapRow f (e:es) x y = (f e x y):(mapRow f es (x+1) y)
